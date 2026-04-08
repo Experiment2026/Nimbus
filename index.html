@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #222;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h1 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="gate" class="wrap">
+    <div class="card">
+      <h1>Access required</h1>
+      <p>Please enter the study password.</p>
+      <input type="password" id="pw" placeholder="Password" />
+      <button onclick="checkPassword()">Enter</button>
+      <p id="msg" style="color: red;"></p>
+    </div>
+  </div>
+
+  <div id="content" class="wrap hidden">
+    <div class="card">
+      <h1>Welcome</h1>
+      <p>This is the study interface.</p>
+
+      <!-- Paste your Anam embed code below this line -->
+      <div id="anam-container"></div>
+
+      <anam-agent agent-id="f2123397-4dba-4f2c-8f9d-1d8753994123"></anam-agent>
+<script src="https://unpkg.com/@anam-ai/agent-widget" async></script>
+
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = "study123";
+
+    function checkPassword() {
+      const entered = document.getElementById("pw").value;
+      const msg = document.getElementById("msg");
+
+      if (entered === PASSWORD) {
+        document.getElementById("gate").classList.add("hidden");
+        document.getElementById("content").classList.remove("hidden");
+      } else {
+        msg.textContent = "Incorrect password.";
+      }
+    }
+  </script>
+</body>
+</html>
